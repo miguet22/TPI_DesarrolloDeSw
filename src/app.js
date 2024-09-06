@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const eventosRoutes = require('./routes/eventos');
+const eventosRoutes = require('./routes/eventsRouter');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
