@@ -1,83 +1,72 @@
-const pool = require('../config/db');
+const EventModel = require('../models/EventModel');
 
-const postEvents = async (req, res) => {
+const postEvent = async (req, res) => {
     const { nombre, fecha, lugar, descripcion, tematica } = req.body;
-  
-    try {
-      const [result] = await pool.query('INSERT INTO eventos (nombre, fecha, lugar, descripcion, tematica) VALUES (?, ?, ?, ?, ?)', [nombre, fecha, lugar, descripcion, tematica]);
-      res.json({ id: result.insertId, nombre, fecha, lugar, descripcion, tematica });
-    } catch (error) {
-      res.status(500).json({ error: 'Error al crear el evento' });
-    }
-  }
 
-// Obtener todos los eventos
-const getEvents = async (_req, res) => {
-        try {
-          const [rows] = await pool.query('SELECT * FROM eventos');
-          res.json(rows);
-          
-        } catch (error) {
-          res.status(500).json({ error: 'Error al obtener los eventos' });
+    try {
+        const eventId = await EventModel.createEvent({ nombre, fecha, lugar, descripcion, tematica });
+        res.status(201).json({ id: eventId, nombre, fecha, lugar, descripcion, tematica });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al crear el evento' });
+    }
+};
+
+const getAllEvents = async (req, res) => {
+    try {
+        const events = await EventModel.getAllEvents();
+        res.status(200).json(events);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los eventos' });
+    }
+};
+
+const getEventById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const event = await EventModel.getEventById(id);
+        if (!event) {
+            return res.status(404).json({ error: 'Evento no encontrado' });
         }
-        
-      }
-
-//_req --> el guión bajo al principio sirve, en ese caso el req aveces no se utiliza, para que el interprete lo entienda
-//Obtener eventos por id
-
-const getEventsById = async (req, res) => {
-    const { id } = req.params;
-  
-    try {
-      const [rows] = await pool.query('SELECT * FROM eventos WHERE id = ?', [id]);
-      if (rows.length === 0) {
-        return res.status(404).json({ error: 'Evento no encontrado' });
-      }
-      res.json(rows[0]);
+        res.status(200).json(event);
     } catch (error) {
-      res.status(500).json({ error: 'Error al obtener el evento' });
-    }}
-
-//Borrar eventos
-const deleteEvents = async (req, res) => {
-    const { id } = req.params;
-  
-    try {
-      const [result] = await pool.query('DELETE FROM eventos WHERE id = ?', [id]);
-      
-      if (result.affectedRows === 0) {
-        return res.status(404).json({ error: 'Evento no encontrado' });
-      }
-  
-      res.json({ message: 'Evento eliminado' });
-    } catch (error) {
-      res.status(500).json({ error: 'Error al eliminar el evento' });
+        res.status(500).json({ error: 'Error al obtener el evento' });
     }
-  }
+};
 
-//Modificar eventos
-const putEvents = async (req, res) => {
+const putEvent = async (req, res) => {
     const { id } = req.params;
     const { nombre, fecha, lugar, descripcion, tematica } = req.body;
-  
+
     try {
-      const [result] = await pool.query('UPDATE eventos SET nombre = ?, fecha = ?, lugar = ?, descripcion = ?, tematica = ? WHERE id = ?', [nombre, fecha, lugar, descripcion, tematica, id]);
-      
-      if (result.affectedRows === 0) {
-        return res.status(404).json({ error: 'Evento no encontrado' });
-      }
-  
-      res.json({ id, nombre, fecha, lugar, descripcion, tematica });
+        const updated = await EventModel.updateEvent(id, { nombre, fecha, lugar, descripcion, tematica });
+        if (!updated) {
+            return res.status(404).json({ error: 'Evento no encontrado' });
+        }
+        res.status(200).json({ id, nombre, fecha, lugar, descripcion, tematica });
     } catch (error) {
-      res.status(500).json({ error: 'Error al actualizar el evento' });
+        res.status(500).json({ error: 'Error al actualizar el evento' });
     }
-  }
+};
+
+const deleteEvent = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deleted = await EventModel.deleteEvent(id);
+        if (!deleted) {
+            return res.status(404).json({ error: 'Evento no encontrado' });
+        }
+        res.status(200).json({ message: 'Evento eliminado' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar el evento' });
+    }
+};
 
 module.exports = {
-    postEvents,
-    getEvents,
-    getEventsById,
-    deleteEvents,
-    putEvents,
-}
+    postEvent,
+    getAllEvents,
+    getEventById,
+    putEvent,
+    deleteEvent
+};

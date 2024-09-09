@@ -1,13 +1,17 @@
 const express = require('express');
+const eventRoutes = require('./routes/eventRoutes');
 const app = express();
-const eventosRoutes = require('./routes/eventsRouter');
-require('dotenv').config();
-
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json()); // Para procesar JSON
-app.use('/api/eventos', eventosRoutes); // Ruta para los eventos
+// Middleware para parsear JSON
+app.use(express.json());
 
+// Usar las rutas de eventos
+app.use('/api/events', eventRoutes);
+
+// Servidor en ejecución
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`Servidor corriendo en el puerto ${port}`);
 });
+
+

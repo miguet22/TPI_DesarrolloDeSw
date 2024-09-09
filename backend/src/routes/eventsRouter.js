@@ -1,21 +1,20 @@
-const { Router } = require('express');
-const events = require('../controllers/crudEventsCotrollers') // Traigo todas las funciones del archivo mencionado.
-const router = Router() 
-
+const express = require('express');
+const router = express.Router();
+const eventController = require('../controllers/eventController');
 
 // Obtener todos los eventos
-router.get('/', events.getEvents); 
+router.get('/', eventController.getAllEvents);
 
 // Crear un nuevo evento
-router.post('/', events.postEvents);
+router.post('/', eventController.postEvent);
 
 // Obtener un evento por ID
-router.get('/:id', events.getEventsById);
+router.get('/:id', eventController.getEventById);
 
-// Actualizar un evento
-router.put('/:id', events.putEvents);
+// Actualizar un evento por ID
+router.put('/:id', eventController.putEvent);
 
-// Eliminar un evento
-router.delete('/:id', events.deleteEvents);
+// Eliminar un evento por ID
+router.delete('/:id', eventController.deleteEvent);
 
 module.exports = router;
