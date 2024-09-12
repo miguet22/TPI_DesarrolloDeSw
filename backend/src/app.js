@@ -15,7 +15,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/escultura', esculturaRoutes);
 app.use('/api/escultor', escultorRoutes);
 
-
 // Manejo de errores genéricos
 app.use((err, req, res, next) => {
     res.status(500).json({ error: err.message });
