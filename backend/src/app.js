@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config;
 const eventRoutes = require('./routes/eventRoutes');
 const userRoutes = require('./routes/userRoutes');
-const esculturaRoutes = require('./routes/esculturaRoutes');
+const escultorRoutes = require('./routes/escultorRoutes');
 const app = express();
 
 // Middleware para procesar JSON
@@ -11,6 +11,7 @@ app.use(express.json());
 // Rutas de eventos
 app.use('/api/events', eventRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/escultor', escultorRoutes);
 //app.use('/api/escultura', esculturaRoutes);
 
 // Manejo de errores genéricos
