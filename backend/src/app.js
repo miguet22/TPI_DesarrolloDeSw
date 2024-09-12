@@ -11,7 +11,7 @@ app.use(express.json());
 // Rutas de eventos
 app.use('/api/events', eventRoutes);
 app.use('/api/users', userRoutes);
-//app.use('/api/escultura', esculturaRoutes);
+app.use('/api/escultura', esculturaRoutes);
 
 // Manejo de errores genéricos
 app.use((err, req, res, next) => {
