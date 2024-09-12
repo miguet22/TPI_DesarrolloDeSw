@@ -3,6 +3,7 @@ require('dotenv').config;
 const eventRoutes = require('./routes/eventRoutes');
 const userRoutes = require('./routes/userRoutes');
 const escultorRoutes = require('./routes/escultorRoutes');
+const esculturaRoutes = require('./routes/esculturaRoutes')
 const app = express();
 
 // Middleware para procesar JSON
