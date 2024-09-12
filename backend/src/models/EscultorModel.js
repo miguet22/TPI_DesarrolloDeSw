@@ -18,7 +18,7 @@ class EscultorModel {
 
     // Obtener Escultoro por ID
     static async getEscultorById(id_escultor) {
-        const [rows] = await pool.query('SELECT * FROM Escultores WHERE id = ?', [id]);
+        const [rows] = await pool.query('SELECT * FROM Escultores WHERE id = ?', [id_escultor]);
         if (rows.length === 0) {
             return null;
         }
@@ -36,7 +36,7 @@ class EscultorModel {
 
     // Eliminar Escultoro por ID
     static async deleteEscultor(id_escultor) {
-        const [result] = await pool.query('DELETE FROM escultor WHERE id_escultor = ?', [id]);
+        const [result] = await pool.query('DELETE FROM escultor WHERE id_escultor = ?', [id_escultor]);
         return result.affectedRows > 0;
     }
 }
