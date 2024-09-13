@@ -9,3 +9,6 @@ Como incializar el frontend
     npm install --> para descargar todas las dependencias que estan en el package.json del front
     npm run dev --> inicializar el proyecto
     
+
+
+NO SE OLVIDEN DE PONER EL .gitignore
