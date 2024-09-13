@@ -70,3 +70,40 @@ footer {
     font-size: 14px;
     color: #9fa3a9;
 }
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column; /* Cambiar las columnas a dirección vertical */
+        align-items: center; /* Centrar las columnas */
+        padding: 15px 10px;
+    }
+
+    .footer-column {
+        margin: 10px 0; /* Ajustar los márgenes para columnas apiladas */
+        text-align: center;
+        flex-basis: 100%; /* Forzar que cada columna ocupe el ancho completo */
+    }
+
+    .social-media ul {
+        flex-direction: row; /* Mantener los íconos de redes sociales en una fila horizontal */
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas (móviles de menos de 480px) */
+@media (max-width: 480px) {
+    footer {
+        padding: 10px 5px; /* Hacerlo más compacto */
+    }
+
+    .footer-column {
+        margin: 5px 0;
+    }
+
+    .footer-bottom {
+        font-size: 10px;
+    }
+
+    .social-media img {
+        width: 24px;  /* Mantener el tamaño de los íconos constante */
+        height: 24px;
+    }
+}
