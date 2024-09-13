@@ -5,12 +5,16 @@ const userRoutes = require('./routes/userRoutes');
 const escultorRoutes = require('./routes/escultorRoutes');
 const esculturaRoutes = require('./routes/esculturaRoutes');
 const app = express();
-
+const cors = require('cors');
 // Middleware para procesar JSON
 app.use(express.json());
 
+app.use(cors({
+    origin: '*',  // Permitir todos los orígenes. Para producción, considera especificar orígenes seguros.
+  }));
+
 // Rutas de eventos
-app.use('/api/events', eventRoutes);
+app.use('/api/eventos', eventRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/escultura', esculturaRoutes);
 app.use('/api/escultor', escultorRoutes);

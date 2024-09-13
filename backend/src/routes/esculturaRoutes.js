@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', EsculturaController.getAllEsculturas);
 
 // Crear un nuevo escultura
-router.post('/', EventController.createEscultura);
+router.post('/', EsculturaController.createEscultura);
 
 // Obtener un escultura por ID
 router.get('/:id', EsculturaController.getEsculturaById);

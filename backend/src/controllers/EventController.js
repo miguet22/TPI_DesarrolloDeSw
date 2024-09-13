@@ -13,7 +13,7 @@ class EventController {
     }
 
     // Obtener todos los eventos
-    static async getAllEvents(req, res) {
+    static async getAllEvents(_req, res) {
         try {
             const events = await EventModel.getAllEvents();
             res.status(200).json(events);

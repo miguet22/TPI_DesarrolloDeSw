@@ -1,5 +1,4 @@
-import React from 'react';
-import '/css/cuerpo.css'; // Asegúrate de incluir el archivo CSS aquí si es necesario
+import '/public/css/cuerpo.css'; // Asegúrate de incluir el archivo CSS aquí si es necesario
 
 const Cuerpo = () => {
     return (

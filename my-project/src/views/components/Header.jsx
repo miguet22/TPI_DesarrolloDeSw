@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import '/css/Header.css'; 
+
+import  { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '/public/css/Header.css'; 
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,13 +12,13 @@ const Header = () => {
     return (
         <header className="header">
             <div className="logo">
-                <img src="img/logo.png" alt="Logo de la marca" />
+                <Link to="/"><img src="img/logo.png" alt="Logo de la marca" /></Link>
             </div>
             <nav>
                 <ul className="nav-links">
-                    <li><a href="#">Escultores</a></li>
-                    <li><a href="#">Esculturas</a></li>
-                    <li><a href="#">Eventos</a></li>
+                    <li><Link to="/escultores">Escultores</Link></li>
+                    <li><Link to="/esculturas">Esculturas</Link></li>
+                    <li><Link to="/eventos">Eventos</Link></li>
                 </ul>
             </nav>
             <a className="btn" href="#"><button>Iniciar Sesion</button></a>
@@ -26,10 +28,10 @@ const Header = () => {
                 <div id="mobile-menu" className={`overlay ${isOpen ? 'open' : ''}`}>
                     <a onClick={closeNav} href="#" className="close">&times;</a>
                     <div className="overlay-content">
-                        <a href="#">Escultores</a>
-                        <a href="#">Esculturas</a>
-                        <a href="#">Eventos</a>
-                        <a href="#">Iniciar Sesion</a>
+                        <Link to="/escultores">Escultores</Link>
+                        <Link to="/esculturas">Esculturas</Link>
+                        <Link to="/eventos">Eventos</Link>
+                        <Link to="#">Iniciar Sesion</Link>
                     </div>
                 </div>
             )}

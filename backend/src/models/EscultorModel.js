@@ -4,10 +4,10 @@ class EscultorModel {
     // Crear un nuevo evento
     static async createEscultor({ nombre, biografia, contacto, obras_previas, imagen }) {
         const [result] = await pool.query(
-            'INSERT INTO Escultores (nombre, biografia, contacto, obras_previas, imagen) VALUES (?, ?, ?, ?, ?)',
-            [nombre, biografia, contacto, obras_previas, imagen]
+            'INSERT INTO Escultores (nombre, biografia, contacto, obras_previas, imagen_esc, imagen_nacionalidad, nacionalidad) VALUES (?, ?, ?, ?, ?)',
+            [nombre, biografia, contacto, obras_previas, imagen_esc, imagen_nacionalidad, nacionalidad]
         );
-        return { id_escultor: result.insertId, nombre, biografia, contacto, obras_previas, imagen };
+        return { id_escultor: result.insertId, nombre, biografia, contacto, obras_previas, imagen_esc, imagen_nacionalidad, nacionalidad };
     }
 
     // Obtener todos los Escultores
@@ -28,8 +28,8 @@ class EscultorModel {
     // Actualizar Escultoro por ID
     static async updateEscultor(id_escultor, { nombre, biografia, contacto, obras_previas, imagen }) {
         const [result] = await pool.query(
-            'UPDATE Escultores SET nombre = ?, biografia = ?, contacto = ?, obras_previas = ?, imagen = ? WHERE id_escultor = ?',
-            [nombre, biografia, contacto, obras_previas, imagen, id_escultor]
+            'UPDATE Escultores SET nombre = ?, biografia = ?, contacto = ?, obras_previas = ?, imagen_esc = ?,imagen_nacionalidad = ?, nacionalidad = ? WHERE id_escultor = ?',
+            [nombre, biografia, contacto, obras_previas, imagen_esc, imagen_nacionalidad, nacionalidad, id_escultor]
         );
         return result.affectedRows > 0;
     }
