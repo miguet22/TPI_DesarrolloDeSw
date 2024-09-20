@@ -6,6 +6,7 @@ import Eventos from './views/components/Eventos';
 import Escultores from './views/components/Escultores'; // Importa otros componentes según sea necesario
 import Esculturas from './views/components/Esculturas';
 
+
 const App = () => {
   return (
     <Router>
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/escultores" element={<Escultores />} />
             <Route path="/esculturas" element={<Esculturas />} />
             <Route path="*" element={<div>404 Not Found</div>} /> {/* Página 404 */}
+          
           </Routes>
         </main>
         <Footer />

@@ -19,3 +19,5 @@ Como incializar el frontend
 
 
 NO SE OLVIDEN DE PONER EL .gitignore
+
+
