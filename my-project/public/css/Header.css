@@ -57,7 +57,7 @@
     color: #393d42;
 }
 
-.header .btn button, .header .menu button {
+.header .btn {
     font-weight: 700;
     color: #1f2124;
     padding: 9px 25px;
@@ -68,11 +68,26 @@
     transition: all 0.3s ease 0s;
 }
 
-.menu {
+.header .menu button {
+    font-weight: 700;
+    color: #1f2124;
+    padding: 9px 25px;
+    background: #6a6e73;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.menu{
     display: none;
 }
+.header .btn:hover {
+    background-color: #9fa3a9;
+    color: #393d42;
+    transform: scale(1.1);
+}
 
-.header .btn button:hover, .header .menu button:hover {
+.header .menu button:hover {
     background-color: #9fa3a9;
     color: #393d42;
     transform: scale(1.1);
@@ -141,6 +156,20 @@
         top: 15px;
         right: 35px;
     }
+}
+.user-info {
+    position: relative;
+}
+
+.logout-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
 }
 
 /* Add styles for when the menu is open */

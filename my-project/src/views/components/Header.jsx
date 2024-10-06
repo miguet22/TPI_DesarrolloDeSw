@@ -1,13 +1,17 @@
-
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '/public/css/Header.css'; 
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);  
+    const [showLogout, setShowLogout] = useState(false);      
+    const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
     const openNav = () => setIsOpen(true);
     const closeNav = () => setIsOpen(false);
+
+    const toggleLogout = () => setShowLogout(!showLogout); 
 
     return (
         <header className="header">
@@ -19,11 +23,39 @@ const Header = () => {
                     <li><Link to="/escultores">Escultores</Link></li>
                     <li><Link to="/esculturas">Esculturas</Link></li>
                     <li><Link to="/eventos">Eventos</Link></li>
+                    {isAuthenticated && <li><Link to="/votacion">Votación</Link></li>}
                 </ul>
             </nav>
-            <a className="btn" href="#"><button>Iniciar Sesion</button></a>
+            
+            {!isAuthenticated ? (
+               
+                <button className="btn" onClick={loginWithRedirect}>Iniciar Sesión</button>
+            ) : (
+
+                <div className="user-info">
+                    <img 
+                        src={user.picture || "img/avatar.png"} 
+                        alt="User Icon" 
+                        onClick={toggleLogout}  
+                        style={{ cursor: 'pointer', borderRadius: '50%', width: '50px', height: '50px' }}
+                    />
+                    {showLogout && (
+                        <div className="logout-menu">
+                            <button 
+                                onClick={() => logout({ returnTo: window.location.origin })}
+                                style={{ marginTop: '10px' }}
+                            >
+                                Cerrar Sesión
+                            </button>
+                        </div>
+                    )}
+                </div>
+            )}
+
+            
             <a onClick={openNav} className="menu" href="#"><button>Menu</button></a>
 
+        
             {isOpen && (
                 <div id="mobile-menu" className={`overlay ${isOpen ? 'open' : ''}`}>
                     <a onClick={closeNav} href="#" className="close">&times;</a>
@@ -31,7 +63,11 @@ const Header = () => {
                         <Link to="/escultores">Escultores</Link>
                         <Link to="/esculturas">Esculturas</Link>
                         <Link to="/eventos">Eventos</Link>
-                        <Link to="#">Iniciar Sesion</Link>
+                        {isAuthenticated ? (
+                            <Link to="/votacion">Votación</Link>
+                        ) : (
+                            <a onClick={loginWithRedirect}>Iniciar Sesión</a>
+                        )}
                     </div>
                 </div>
             )}

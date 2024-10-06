@@ -5,6 +5,9 @@ import Cuerpo from './views/components/Cuerpo';
 import Eventos from './views/components/Eventos';
 import Escultores from './views/components/Escultores'; // Importa otros componentes según sea necesario
 import Esculturas from './views/components/Esculturas';
+import Votacion from './views/components/Votacion';
+
+
 
 const App = () => {
   return (
@@ -17,6 +20,7 @@ const App = () => {
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/escultores" element={<Escultores />} />
             <Route path="/esculturas" element={<Esculturas />} />
+            <Route path="/votacion" element={<Votacion />} />
             <Route path="*" element={<div>404 Not Found</div>} /> {/* Página 404 */}
           </Routes>
         </main>
