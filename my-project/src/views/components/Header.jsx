@@ -34,7 +34,7 @@ const Header = () => {
 
                 <div className="user-info">
                     <img 
-                        src={user.picture || "img/avatar.png"} 
+                        src={user.picture || "img/avatar.png"} //pone la imagen del gmail del usuario o una por default
                         alt="User Icon" 
                         onClick={toggleLogout}  
                         style={{ cursor: 'pointer', borderRadius: '50%', width: '50px', height: '50px' }}
