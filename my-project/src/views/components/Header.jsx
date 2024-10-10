@@ -18,6 +18,7 @@ const Header = () => {
                     <li><Link to="/escultores">Escultores</Link></li>
                     <li><Link to="/esculturas">Esculturas</Link></li>
                     <li><Link to="/eventos">Eventos</Link></li>
+                    <li><Link to="/CRUD">CRUD</Link></li>
                 </ul>
             </nav>
             <a className="btn" href="#"><button>Iniciar Sesion</button></a>
@@ -30,6 +31,7 @@ const Header = () => {
                         <Link to="/escultores">Escultores</Link>
                         <Link to="/esculturas">Esculturas</Link>
                         <Link to="/eventos">Eventos</Link>
+                        <Link to="/CRUD">CRUD</Link>
                         <Link to="#">Iniciar Sesion</Link>
                     </div>
                 </div>
