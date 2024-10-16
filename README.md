@@ -26,10 +26,12 @@
 
 > [!IMPORTANT]
 > Como incializar el frontend
+```
+cd my-proyect
+npm install
+npm run dev
+```
 
-+ `cd my-proyect`
-+ `npm install` **-->** Para descargar todas las dependencias que estan en el package.json del front
-+ `npm run dev` **-->** Inicializar el proyecto
     
 
 > [!CAUTION]
