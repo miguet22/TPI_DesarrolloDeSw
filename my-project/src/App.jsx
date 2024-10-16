@@ -3,9 +3,9 @@ import Header from './views/components/Header';
 import Footer from './views/components/Footer';
 import Cuerpo from './views/components/Cuerpo';
 import Eventos from './views/components/Eventos';
-import Escultores from './views/components/Escultores'; // Importa otros componentes según sea necesario
+import Escultores from './views/components/Escultores'; 
 import Esculturas from './views/components/Esculturas';
-
+import Create from './views/components/Create'; // Asegúrate de importar el componente Create
 
 const App = () => {
   return (
@@ -18,13 +18,17 @@ const App = () => {
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/escultores" element={<Escultores />} />
             <Route path="/esculturas" element={<Esculturas />} />
-            <Route path="*" element={<div>404 Not Found</div>} /> {/* Página 404 */}
+            
+            {/* Ruta para CRUD */}
+            <Route path="/crud" element={<Create />} />
+            
+            {/* Página 404 */}
+            <Route path="*" element={<div>404 Not Found</div>} />
           
           </Routes>
         </main>
         <Footer />
       </div>
-     
     </Router>
   );
 }
