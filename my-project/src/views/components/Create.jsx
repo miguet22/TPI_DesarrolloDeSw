@@ -62,11 +62,18 @@ export default function Create() {
                 biografia // Asegúrate de incluir la biografía
             });
             console.log('Datos enviados correctamente');
+            window.alert ("Carga de escultor realizada")
+            // Limpiar los campos del formulario
+            setFirstName('');
+            setLastName('');
+            setNacionalidad('');
+            setBanderaUrl('');
+            setBiografia('');
+
         } catch (error) {
             console.error('Error al enviar los datos', error);
         }
     };
-    
 
     return (
         <div>
@@ -74,7 +81,7 @@ export default function Create() {
                 <Form.Field>
                     <label>Nombre</label>
                     <input 
-                        placeholder='Nombre' 
+                        placeholder='Ingrese Nombre' 
                         value={nombre}
                         onChange={(e) => setFirstName(e.target.value)}
                     />
@@ -82,7 +89,7 @@ export default function Create() {
                 <Form.Field>
                     <label>Apellido</label>
                     <input 
-                        placeholder='Apellido' 
+                        placeholder='Ingrese Apellido' 
                         value={apellido}
                         onChange={(e) => setLastName(e.target.value)}
                     />
@@ -110,10 +117,10 @@ export default function Create() {
                 <Form.Field>
                     <label>Biografía</label>
                     <textarea 
-                        placeholder='Escribe una breve biografía (máx. 200 caracteres)' 
+                        placeholder='Escriba una breve biografía (máx. 150 caracteres)' 
                         value={biografia}
                         onChange={(e) => setBiografia(e.target.value)}
-                        maxLength={200} // Limita la longitud del texto a 200 caracteres
+                        maxLength={150} // Limita la longitud del texto a 200 caracteres
                     />
                 </Form.Field>
                 <Button onClick={postData} type='submit'>Enviar</Button>
